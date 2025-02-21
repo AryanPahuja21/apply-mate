@@ -1,10 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Instahyre Auto-Apply",
+  "name": "Apply-Mate",
   "version": "1.0",
-  "description": "Automatically apply for internships on Instahyre",
-  "permissions": ["storage", "activeTab", "scripting"],
-  "host_permissions": ["https://www.instahyre.com/*"],
+  "description": "Agent for automatically apply for internships & jobs",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.instahyre.com/*"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -18,8 +24,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.instahyre.com/*"],
-      "js": ["content.js"]
+      "matches": [
+        "https://www.instahyre.com/candidate/opportunities/*"
+      ],
+      "js": [
+        "scripts/instahyre.js"
+      ]
     }
   ],
   "icons": {
