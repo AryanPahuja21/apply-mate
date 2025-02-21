@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "ApplyMate",
+  "version": "1.0",
+  "description": "Auto-fill internship applications easily!",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["https://*/*", "http://*/*"]
+}
