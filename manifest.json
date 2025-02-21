@@ -30,6 +30,14 @@
       "js": [
         "scripts/instahyre.js"
       ]
+    },
+    {
+      "matches": [
+        "https://internshala.com/internships/*"
+      ],
+      "js": [
+        "scripts/internshala.js"
+      ]
     }
   ],
   "icons": {

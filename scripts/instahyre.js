@@ -10,29 +10,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-// async function applyToJobs() {
-
-//   const mainDiv = document.querySelectorAll(".employer-row");
-//   const links = mainDiv.length;
-
-
-//   for (let i = 0; i < links; i++) {
-//     setTimeout(() => {
-//       let startingPoint = mainDiv[i];
-//       startingPoint.querySelector("button").click();
-//       setTimeout(() => {
-//         document.querySelector(".application-modal-block >* .apply").click();
-//         setTimeout(() => {
-//           document.querySelectorAll(".application-modal-close").forEach((e) => {
-//             e.click();
-//           });
-//         }, 500);
-//       }, 1000);
-//     }, 1000);
-//   }
-// }
-
-
 function applyToJobs() {
   let mainDiv = document.querySelectorAll(".employer-row");
 
