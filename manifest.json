@@ -33,7 +33,7 @@
     },
     {
       "matches": [
-        "https://internshala.com/internships/*"
+        "https://internshala.com/*"
       ],
       "js": [
         "scripts/internshala.js"

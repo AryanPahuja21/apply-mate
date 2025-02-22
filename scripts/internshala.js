@@ -1,45 +1,62 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "autoApply") {
-        sendResponse("started")
-        const jobContainer = document.querySelector(".container > .row > div").children[1];
-        if (jobContainer) {
-            let mainDiv = document.querySelectorAll(".employer-row");
+        const mainDiv = document.querySelectorAll("#internship_list_container_1 > div");
+        if (mainDiv) {
+            sendResponse("started");
             localStorage.setItem("apply-mate-loop-count", mainDiv.length);
             applyToJobs();
         }
     }
 });
 
+if (localStorage.getItem("apply-mate-loop-count")) {
+    applyToJobs();
+}
 
 function applyToJobs() {
-    // let mainDiv = document.querySelectorAll(".employer-row");
 
-    // let startingPoint = mainDiv[0];
-    // let applyButton = startingPoint.querySelector("button");
+    setTimeout(() => {
+        const mainDiv = document.querySelectorAll("#internship_list_container_1 > div");
+        mainDiv[0].click();
+        setTimeout(() => {
+            document.getElementById("continue_button").click();
+            setTimeout(() => {
+                if (document.getElementById("cover_letter")) {
+                    document.getElementById("cover_letter").value = "I my new in tech , so just need to start my career"
+                }
+                if (document.querySelectorAll(".additional_question").length > 0) {
+                    document.querySelectorAll(".additional_question").forEach((q) => {
+                        if (q.querySelector('textarea')) {
+                            q.querySelector('textarea').value = "hello i am beginner"
+                        } else if (q.querySelector('input[type="number"')) {
+                            q.querySelector('input[type="number"').value = 0
+                        } else if (q.querySelector('input[type="radio"')) {
+                            q.querySelector('input[type="radio"').checked = true;
+                        } else if (q.querySelector('select')) {
+                            q.querySelector('select').children[1].selected = true;
+                        }
+                    })
+                }
+                setTimeout(() => {
+                    document.getElementById("submit").click();
+                }, 500);
+                setTimeout(() => {
+                    let loopCount = localStorage.getItem("apply-mate-loop-count");
+                    if (loopCount) {
+                        localStorage.setItem("apply-mate-loop-count", loopCount - 1);
+                        if (loopCount == 0) {
+                            localStorage.removeItem("apply-mate-loop-count");
+                        }
+                    }
+                    setTimeout(() => {
+                        document.querySelector("#dismiss_similar_job_modal").click();
+                        if (localStorage.getItem("apply-mate-loop-count")) {
+                            applyToJobs();
+                        }
+                    }, 1000);
+                }, 500);
+            }, 500);
+        }, 1500);
+    }, 1000);
 
-    // if (applyButton) {
-    //     applyButton.click();
-
-    //     setTimeout(() => {
-    //         let applyModal = document.querySelector(".application-modal-block >* .apply");
-    //         if (applyModal) {
-    //             applyModal.click();
-    //         }
-    //         setTimeout(() => {
-    //             document.querySelectorAll(".application-modal-close").forEach((e) => {
-    //                 e.click();
-    //             });
-    //             setTimeout(() => {
-    //                 let loopCount = localStorage.getItem("apply-mate-loop-count");
-    //                 if (loopCount) {
-    //                     localStorage.setItem("apply-mate-loop-count", loopCount - 1);
-    //                     if (loopCount == 0) {
-    //                         localStorage.removeItem("apply-mate-loop-count");
-    //                     }
-                        applyToJobs(); // recursive call
-    //             }
-    //         }, 1000);
-    //     }, 500);
-    // }, 1000);
-    // }
 }
