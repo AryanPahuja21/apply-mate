@@ -10,6 +10,7 @@
   ],
   "host_permissions": [
     "https://www.instahyre.com/*",
+    "https://internshala.com/*",
     "https://wellfound.com/jobs/*"
   ],
   "action": {
@@ -38,6 +39,14 @@
       ],
       "js": [
         "scripts/internshala.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.naukri.com/*"
+      ],
+      "js": [
+        "scripts/naukri.js"
       ]
     }
   ],
